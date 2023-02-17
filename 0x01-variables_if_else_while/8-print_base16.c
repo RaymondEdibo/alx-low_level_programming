@@ -10,15 +10,13 @@ int main(void)
 	char c;
 	int x;
 
-	x = 0;
-	c = 'a';
-	while (x < 10){
-		putchar(x + '0');
-		x++;
-}
-	while (c <= 'f'){
+	for (x = 0; x < 10; x++)
+		putchar((num % 10) + '0');
+
+	for (c = 'a'; c <= 'f'; c++)
 		putchar(c);
-		c++;
-	}
-    return (0);
+
+	putchar('\n');
+
+	return (0);
 }
