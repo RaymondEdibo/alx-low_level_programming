@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * main - check the code
- *
- * Return: Always 0.
+ * print_diagonal -  a function that draws a diagonal line on the terminal
+ * @n: input number of times '\' should be printed
+ * Return: a diagonal
  */
 
 void print_diagonal(int n)

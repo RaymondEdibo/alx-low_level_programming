@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * main - line
- *
- * Return: Always 0.
+ * print_line - a function that draws a straight line in the terminal
+ * @n: input number of times to print '_'
+ * Return: a straight line
  */
+
 void print_line(int n)
 {
 	if (n < = 0)
