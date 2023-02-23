@@ -5,15 +5,11 @@
  *
  * Return: 0-9 followed by newline
  */
-
 void print_numbers(void)
 {
-	char n;
+	int i;
 
-	for (n = '0'; n <= 9; n++)
-	{
-		_putchar('n');
-	}
+	for (i = 0; i <= 9; i++)
+		_putchar(i + '0');
 	_putchar('\n');
-
 }

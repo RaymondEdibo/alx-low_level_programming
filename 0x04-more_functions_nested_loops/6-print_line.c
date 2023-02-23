@@ -8,15 +8,15 @@
 
 void print_line(int n)
 {
-	if (n < = 0)
+	int co;
+
+	if (n <= 0)
 	{
 		_putchar('\n');
 	}
-	else 
+	else
 	{
-		int i;
-
-		for (i == 1; i <= n; i++)
+		for (co = 1; co <= n; co++)
 		{
 			_putchar('_');
 		}
