@@ -1,29 +1,31 @@
 #include "main.h"
+
 /**
- * _strstr - Entry point
- * @haystack: input
- * @needle: input
- * Return: Always 0 (Success)
+ * _strstr - prints buffer in hexa
+ * @haystack: buffer
+ * @needle: buffer2
+ *
+ * Return: Nothing.
  */
 char *_strstr(char *haystack, char *needle)
 {
-	for (; *haystack != '\0'; haystack++)
+	int i = 0, j, c;
+
+	while (*(haystack + i) != '\0')
 	{
-		char *l = haystack;
-		char *p = needle;
-
-
-		while (*l == *p && *p != '\0')
+		c = i;
+		j = 0;
+		while (*(needle + j) == *(haystack + i) && *(haystack + i) != '\0'
+		       && *(haystack + i) != '\0')
 		{
-			l++;
-			p++;
+			i++;
+			j++;
 		}
-
-
-		if (*p == '\0')
-			return (haystack);
+		if (*(needle + j) == '\0')
+		{
+			return (haystack + c);
+		}
+		i = c + 1;
 	}
-
-
 	return (0);
 }
