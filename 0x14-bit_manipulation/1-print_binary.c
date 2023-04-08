@@ -9,7 +9,7 @@
 
 void print_binary(unsigned long int n){
 
-int l, k, z, r;
+int l, h, k, z, r;
 z = n/1000,
 l = n/100;
 k = n/10;
