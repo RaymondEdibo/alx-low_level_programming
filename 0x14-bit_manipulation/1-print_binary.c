@@ -1,21 +1,39 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include "main.h"
+#include "holberton.h"
 
 /**
-* print_binary - print
-*
-* @n: number
-*/
+  * print_binary - Prints
+  * @n: binary number
+  *
+  * Return: 0
+  */
+void print_binary(unsigned long int n)
+{
+	if (n == 0)
+	{
+		_putchar('0');
+		return;
+	}
 
-void print_binary(unsigned long int n){
+	_do(n);
+}
 
-int l, h, k, z, r;
-z = n/1000,
-l = n/100;
-k = n/10;
-h = n%10;
+/**
+  * _do - print
+  * @n: integer
+  *
+  * Return: 0
+  */
+void _divide(unsigned long int n)
+{
+	if (n < 1)
+		return;
 
+	_do(n >> 1);
 
-r = ((z*8)+(l*4)+(k*2)+(h*1));
-	_putchar(r + '0');
+	if (n & 1)
+		_putchar('1');
+	else
+		_putchar('0');
 }
