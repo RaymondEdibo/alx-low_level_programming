@@ -7,7 +7,7 @@
   * binary_to_uint - Prints
   * @b: binary number
   *
-  * Return: 
+  * Return: the converted number, or 0 
   */
 unsigned int binary_to_uint(const char *b)
 {
@@ -26,3 +26,4 @@ unsigned int binary_to_uint(const char *b)
 	}
 	return (value);
 }
+
