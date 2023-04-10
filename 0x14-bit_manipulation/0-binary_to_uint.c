@@ -1,13 +1,12 @@
 #include <stdio.h>
-#include "main.h"
+#include "holberton.h"
 
 /**
-  * binary_to_uint - Prints
-  * Prototype: unsigned int binary_to_uint(const char *b);
-  * @b: binary number
-  *
-  * Return: the converted number, or 0 
-  */
+ * binary_to_uint - Function
+ * Prototype: unsigned int binary_to_uint(const char *b);
+ * @b: is pointing to a string of 0 and 1 chars
+ * Return: the converted number, or 0
+ */
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int value = 0;
@@ -25,4 +24,3 @@ unsigned int binary_to_uint(const char *b)
 	}
 	return (value);
 }
-
