@@ -1,10 +1,9 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include "main.h"
-#include <math.h>
 
 /**
   * binary_to_uint - Prints
+  * Prototype: unsigned int binary_to_uint(const char *b);
   * @b: binary number
   *
   * Return: the converted number, or 0 
