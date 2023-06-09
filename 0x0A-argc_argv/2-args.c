@@ -10,7 +10,12 @@
  */
 int main(int argc, char *argv[])
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
+	int t = 0;
+
+	while (t < argc)
+	{
+		printf("%s\n", argv[t]);
+		t++;
+	}
 	return (0);
 }
