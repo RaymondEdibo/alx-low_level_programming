@@ -15,10 +15,8 @@ int main(int argc, char *argv[])
 	int i, j;
 	int add = 0;
 
-	if (argc == 1)
+	if (argc > 1)
 	{
-		return (0);
-	}
 	for (i = 1; i < argc; i++)
 	{
 		for (j = 0; argv[i][j] != '\0'; j++)
@@ -32,5 +30,10 @@ int main(int argc, char *argv[])
 		add += atoi(argv[i]);
 	}
 		printf("%d\n", add);
+	}
+	else
+	{
+		printf("0\n");
+	}
 		return (0);
 }
