@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- *_strdup - check the code
+ *str_concat - check the code
  *@s1: string 1
  *@s2: string 2
  *
