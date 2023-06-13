@@ -3,10 +3,10 @@
 #include <string.h>
 
 /**
- * counter - main checker
- * @str: input
+ * counter - Counts the number of words in a string.
+ * @str: The input string.
  *
- * Return: words no.
+ * Return: The number of words.
  */
 int counter(char *str)
 {
@@ -22,14 +22,46 @@ int counter(char *str)
 }
 
 /**
- * strtow - main
- * @str: input
+ * allocate_words - Allocates memory for the words array.
+ * @word_count: The number of words.
  *
- * Return: pointer or NULL
+ * Return: The allocated words array.
+ */
+char **allocate_words(int word_count)
+{
+	char **words = malloc((word_count + 1) * sizeof(char *));
+	if (words == NULL)
+		return NULL;
+	return (words);
+}
+
+/**
+ * copy_word - Copies a word from the input string to a new dynamically allocated string.
+ * @str: The input string.
+ * @start: The starting index of the word.
+ * @len: The length of the word.
+ *
+ * Return: The new string containing the word.
+ */
+char *copy_word(char *str, int start, int len)
+{
+	char *word = malloc((len + 1) * sizeof(char));
+	if (word == NULL)
+		return NULL;
+	strncpy(word, str + start, len);
+	word[len] = '\0';
+	return (word);
+}
+
+/**
+ * strtow - Splits a string into words.
+ * @str: The input string.
+ *
+ * Return: Pointer to an array of strings (words) or NULL if failed.
  */
 char **strtow(char *str)
 {
-	char **a;
+	char **words;
 	int i, j, l, wc, wl, t = 0;
 
 	if (str == NULL || *str == '\0')
@@ -39,8 +71,8 @@ char **strtow(char *str)
 	if (wc == 0)
 		return (NULL);
 
-	a = malloc((wc + 1) * sizeof(char *));
-	if (a == NULL)
+	words = allocate_words(wc);
+	if (words == NULL)
 		return (NULL);
 
 	for (i = 0; i < wc; i++)
@@ -58,22 +90,19 @@ char **strtow(char *str)
 			wl++;
 		}
 
-		a[i] = malloc((wl + 1) * sizeof(char));
-		if (a[i] == NULL)
+		words[i] = copy_word(str, t, wl);
+		if (words[i] == NULL)
 		{
 			for (j = 0; j < i; j++)
-				free(a[j]);
-			free(a);
+				free(words[j]);
+			free(words);
 			return (NULL);
 		}
-
-		strncpy(a[i], str + t, wl);
-		a[i][wl] = '\0';
 
 		t += wl;
 	}
 
-	a[wc] = NULL;
+	words[wc] = NULL;
 
-	return (a);
+	return (words);
 }
