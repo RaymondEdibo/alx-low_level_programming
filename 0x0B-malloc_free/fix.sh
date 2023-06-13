@@ -11,6 +11,9 @@ temp_file=$(mktemp)
 
 # Read file line by line and modify code
 while IFS= read -r line; do
+    # Remove trailing whitespaces from the line
+    line="${line%%[[:blank:]]}"
+
     # Count the number of consecutive spaces at the beginning of the line
     spaces=$(expr "$line" : '^ *')
 
@@ -29,3 +32,4 @@ done < "$1"
 
 # Overwrite the original file with the contents of the temporary file
 mv "$temp_file" "$1"
+
