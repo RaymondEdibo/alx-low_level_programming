@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- *str_concat - check the code
+ *_strdup - check the code
  *@s1: string 1
  *@s2: string 2
  *
@@ -12,14 +12,17 @@ char *str_concat(char *s1, char *s2)
 {
 	char *a;
 	int i;
-	int add;
 	int l1 = 0;
 	int j = 0;
 	int l2 = 0;
 
-	if (s1 == NULL || s2 == NULL)
+	if (s1 == NULL)
 	{
-		return (NULL);
+		s1 = "";
+	}
+	if (s2 == NULL)
+	{
+		s2 = "";
 	}
 	while (s1[l1] != 0)
 	{
@@ -29,8 +32,7 @@ char *str_concat(char *s1, char *s2)
 	{
 		l2++;
 	}
-	add = l1 + l2;
-	a = malloc((add + 1) * sizeof(char));
+	a = malloc((l1 + l2 + 1) * sizeof(char));
 	if (a == NULL)
 	{
 		return (NULL);
@@ -41,10 +43,9 @@ char *str_concat(char *s1, char *s2)
 		{
 			a[i] = s1[i];
 		}
-		for (i = l1; i <= add ; i++)
+		for (j = 0; j < l2; j++)
 		{
-			a[i] = s2[j];
-			j++;
+			a[i + j] = s2[j];
 		}
 		a[add] = '\0';
 	}
