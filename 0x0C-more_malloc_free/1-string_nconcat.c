@@ -1,52 +1,44 @@
 #include "main.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
-  * string_nconcat - ...
-  * @s1: ...
-  * @s2: ...
-  * @n: ...
-  *
-  * Return: ...
-  */
+ *string_nconcat - check the code
+ *@s1: char
+ *@s2: char
+ *@n: int
+ *
+ *Return: 0
+ */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i = 0, j = 0, k = 0, l = 0;
-	char *str;
+	unsigned int a, b, i;
+	char *j, *k;
 
-	if (s1 == NULL)
+	if (!s1)
 		s1 = "";
-	if (s2 == NULL)
+	if (!s2)
 		s2 = "";
 
-	while (s1[i])
-		i++;
+	for (a = 0, j = s1; *j; j++)
+		a++;
+	for (b = 0, j = s2; *j; j++)
+		b++;
+	if (n > b)
+		n = b;
 
-	while (s2[k])
-		k++;
+	k = malloc((a + n + 1) * sizeof(char));
+	if (!k)
+		return (0);
 
-	if (n >= k)
-		l = i + k;
-	else
-		l = i + n;
-
-	str = malloc(sizeof(char) * l + 1);
-	if (str == NULL)
-		return (NULL);
-
-	k = 0;
-	while (j < l)
+	j = k;
+	while (*s1)
+		*j++ = *s1++;
+	i = 0;
+	while (i < n)
 	{
-		if (j <= i)
-			str[j] = s1[j];
-
-		if (j >= i)
-		{
-			str[j] = s2[k];
-			k++;
-		}
-		j++;
+		*j++ = s2[i++];
 	}
-	str[j] = '\0';
-	return (str);
+	*j = 0;
+
+	return (k);
 }
