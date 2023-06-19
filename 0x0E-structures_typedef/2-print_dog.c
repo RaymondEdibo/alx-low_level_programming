@@ -3,8 +3,6 @@
 /**
  *print_dog - check the code
  *@d: struct dog
- *
- *Return: 0
  */
 void print_dog(struct dog *d)
 {
@@ -17,7 +15,7 @@ void print_dog(struct dog *d)
 	if (d->owner == NULL)
 		d->owner = "(nil)";
 
-	printf("Name: %s\n", (*d).name);
-	printf("Age: %d\n", (*d).age);
-	printf("Owner: %s\n", (*d).owner);
+	printf("Name: %s\n", d->name);
+	printf("Age: %.6f\n", d->age);
+	printf("Owner: %s\n", d->owner);
 }
