@@ -1,50 +1,45 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "lists.h"
 
 /**
-  * insert_nodeint_at_index - ...
-  * @head: ...
-  * @idx: ...
-  * @n: ...
-  *
-  * Return: ...
-  */
+ * insert_nodeint_at_index - check code
+ *
+ * @head: pointer
+ * @idx: index
+ * @n: no.
+ * Return: node index
+ */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *new_node, *iter;
-	unsigned int count = 1;
+	unsigned int i = 1;
+	listint_t *a = *head;
+	listint_t *b;
+	listint_t *c = *head;
 
-	if (head)
+	if (head == NULL)
+		return (NULL);
+	while (i < idx)
 	{
-		new_node = malloc(sizeof(listint_t));
-		if (new_node == NULL)
-			return (NULL);
-
-		new_node->n = n;
-		if (idx > 0)
-		{
-			iter = *head;
-			while (iter)
-			{
-				if (count == idx)
-				{
-					new_node->next = iter->next;
-					iter->next = new_node;
-					return (new_node);
-				}
-				iter = iter->next;
-				count++;
-			}
-			if (idx > count)
-				return (NULL);
-		}
-		else
-		{
-			new_node->next = *head;
-			*head = new_node;
-		}
-		return (new_node);
+		a = (*head)->next;
+		*head = a;
+		++i;
 	}
-	return (NULL);
+	b = malloc(sizeof(listint_t));
+
+	if (b == NULL)
+		return (NULL);
+	b->n = n;
+	if (idx == 0)
+	{
+		b->next = *head;
+		*head = b;
+	}
+	else
+	{
+		b->next = (*head)->next;
+		(*head)->next = b;
+		*head = c;
+	}
+	return (b);
 }

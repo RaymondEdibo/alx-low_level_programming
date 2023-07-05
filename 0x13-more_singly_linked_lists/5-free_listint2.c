@@ -1,30 +1,21 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "lists.h"
 
 /**
-  * free_listint2 - ...
-  * @head: ...
-  *
-  * Return: ...
-  */
+ * free_listint2 - check code
+ * @head: pointer
+ */
 void free_listint2(listint_t **head)
 {
-	listint_t *temp;
+	listint_t *a;
 
-	if (head)
-	{
-		while (*head)
-		{
-			temp = (*head);
-			*head = (*head)->next;
-			free(temp);
-		}
-	}
-	else
-	{
+	if (!(head && *head))
 		return;
+	while (*head != NULL)
+	{
+		a = (*head)->next;
+		free(*head);
+		*head = a;
 	}
-
-	free(*head);
-	head = 0;
 }

@@ -1,24 +1,27 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "lists.h"
 
 /**
-  * sum_listint - ...
-  * @head: ...
-  *
-  * Return: ...
-  */
+ * sum_listint - check code
+ *
+ * @head: pointer
+ *
+ * Return: a
+ */
 int sum_listint(listint_t *head)
 {
-	int amount = 0;
+	unsigned int l = 0;
+	listint_t *a = head;
 
-	if (head)
+	if (head == NULL)
+		return (0);
+
+	while (head)
 	{
-		while (head)
-		{
-			amount += head->n;
-			head = head->next;
-		}
+		l += head->n;
+		a = head->next;
+		head = a;
 	}
-
-	return (amount);
+	return (l);
 }

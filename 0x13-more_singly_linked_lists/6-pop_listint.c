@@ -1,24 +1,28 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "lists.h"
 
 /**
-  * pop_listint - ...
-  * @head: ...
-  *
-  * Return: ...
-  */
+ * pop_listint - check code
+ *
+ * @head: pointer
+ *
+ * Return: a
+ */
 int pop_listint(listint_t **head)
 {
-	listint_t *new_head;
-	int n = 0;
+	int a = 0;
+	listint_t *b = NULL;
 
-	if (*head != NULL)
+	if (*head == NULL)
 	{
-		new_head = (*head)->next;
-		n = (*head)->n;
-		free(*head);
-		*head = new_head;
+		return (0);
 	}
 
-	return (n);
+	b = (*head)->next;
+	a = (*head)->n;
+	free(*head);
+	*head = b;
+
+	return (a);
 }

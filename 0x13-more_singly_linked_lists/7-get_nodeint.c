@@ -1,29 +1,31 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "lists.h"
-#include <stdio.h>
 
 /**
-  * get_nodeint_at_index - ...
-  * @head: ...
-  * @index: ...
-  *
-  * Return: ...
-  */
+ * get_nodeint_at_index - check code
+ *
+ * @head: pointer
+ * @index: index
+ * Return: a
+ */
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	unsigned int count = 0;
+	unsigned int b = 0;
+	listint_t *a = head;
 
-	if (head)
+	if (head == NULL)
 	{
-		while (head)
-		{
-			if (count == index)
-				return (head);
-
-			head = head->next;
-			count++;
-		}
+		return (0);
 	}
 
-	return (NULL);
+	while (b < index)
+	{
+		if (head == NULL)
+			return (NULL);
+		a = head->next;
+		head = a;
+		++b;
+	}
+	return (a);
 }
