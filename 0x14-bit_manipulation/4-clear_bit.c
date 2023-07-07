@@ -1,21 +1,20 @@
-#include <stdio.h>
 #include "main.h"
+#include <stdio.h>
 #include <math.h>
 /**
- * clear_bit - Function that clear the value of a bit to 1 at a given index.
- * Prototype: int set_bit(unsigned long int *n, unsigned int index);
- * @index: is the index, starting from 0 of the bit you want to set.
- * @n: number input.
- * Return: 1 if it worked, or -1 if an error occurred
+ *clear_bit - check the code
+ *@n: int
+ *@index: int
+ *
+ *Return: no. or 0
  */
 int clear_bit(unsigned long int *n, unsigned int index)
-
 {
-	int add;
+	int bit;
 
 	if (index > 63)
 		return (-1);
-	add = 1 << index;
-	*n = *n & (~add);
+	bit = 1 << index;
+	*n = *n & (~bit);
 	return (1);
 }
