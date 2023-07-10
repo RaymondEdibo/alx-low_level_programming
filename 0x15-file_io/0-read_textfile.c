@@ -1,46 +1,43 @@
+#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <stdlib.h>
-
+#include <sys/types.h>
+#include <sys/stat.h>
 /**
- * read_textfile - prints text from a file
+ *read_textfile - check the code
+ *@filename: char
+ *@letters: size_t
  *
- * @filename: name of the file
- * @letters: number of characters to read
- *
- * Return: actual number of letters read, 0 if end of file
+ *Return: 0
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int file;
-	int length, wrotechars;
-	char *buf;
+	int i, j, k;
+	char *a;
 
-	if (filename == NULL || letters == 0)
+	if (filename == NULL)
 		return (0);
-	buf = malloc(sizeof(char) * (letters));
-	if (buf == NULL)
+	a = malloc(letters * sizeof(char) + 1);
+	if (!a)
 		return (0);
-
-	file = open(filename, O_RDONLY);
-	if (file == -1)
+	i = open(filename, O_RDONLY);
+	if (i == -1)
 	{
-		free(buf);
+		free(a);
 		return (0);
 	}
-	length = read(file, buf, letters);
-	if (length == -1)
+	j = read(i, a, letters);
+	if (j == -1)
 	{
-		free(buf);
-		close(file);
+		free(a);
 		return (0);
 	}
-
-	wrotechars = write(STDOUT_FILENO, buf, length);
-
-	free(buf);
-	close(file);
-	if (wrotechars != length)
-		return (0);
-	return (length);
+	k = write(STDOUT_FILENO, a, j);
+	close(i);
+	free(a);
+	if (j == k)
+		return (k);
+	return (0);
 }
