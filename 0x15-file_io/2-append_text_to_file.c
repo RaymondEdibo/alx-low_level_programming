@@ -14,25 +14,26 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-        int i;
-        ssize_t l = 0, k = 0;
-        char *a;
+	FILE *file;
 
-        if (filename == NULL)
-                return (-1);
+	if (filename == NULL)
+		return (-1);
 
-        i = open(filename, O_WRONLY | O_APPEND);
-        if (i == -1)
-                return (-1);
+	if (text_content == NULL)
+	{
+		file = fopen(filename, "r");
+		if (file == NULL)
+			return (-1);
+		fclose(file);
+		return (1);
+	}
 
-        if (text_content != NULL)
-        {
-                for (k = 0, a = text_content; *a; a++)
-                        k++;
-                l = write(i, text_content, k);
-        }
+	file = fopen(filename, "a");
+	if (file == NULL)
+		return (-1);
 
-        if (close(i) == -1 || k != l)
-                return (-1);
-        return (1);
+	fprintf(file, "%s", text_content);
+	fclose(file);
+
+	return (1);
 }
