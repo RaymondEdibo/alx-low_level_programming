@@ -1,40 +1,40 @@
 #include "hash_tables.h"
 /**
-* hash_table_set - add an element to the table
+* hash_table_set - add element
 * @ht: hash table
-* @key: key of the element
+* @key: key the element
 * @value: value of the element
-* Return: an element added to the table
+* Return: element added
 */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index = 0;
-	char *temporal_value = NULL;
-	hash_node_t *temporal = NULL, *new = NULL;
+	unsigned long int in = 0;
+	char *temp_val = NULL;
+	hash_node_t *temp = NULL, *new = NULL;
 
 	if (!ht || !ht->array || !value)
 		return (0);
 
 	if (strlen(key) == 0 || !key)
 		return (0);
-	temporal_value = strdup(value);
-	if (!temporal_value)
+	temp_val = strdup(value);
+	if (!temp_val)
 		return (0);
-	index = key_index((unsigned char *)key, ht->size);
+	in = key_in((unsigned char *)key, ht->size);
 
 	/* checks if a collision exists */
-	temporal = ht->array[index];
-	while (temporal)
+	temp = ht->array[in];
+	while (temp)
 	{
-		if (strcmp(temporal->key, key) == 0)
+		if (strcmp(temp->key, key) == 0)
 		{
-			free(temporal->value);
-			temporal->value = temporal_value;
-			temporal->value = strdup(value);
-			free(temporal_value);
+			free(temp->value);
+			temp->value = temp_val;
+			temp->value = strdup(value);
+			free(temp_val);
 			return (1);
 		}
-		temporal = temporal->next;
+		temp = temp->next;
 	}
 	/* If a collision doesn't exits, insert node */
 	new = malloc(sizeof(hash_node_t));
@@ -44,8 +44,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 	new->key = strdup(key);
-	new->value = temporal_value;
-	new->next = ht->array[index];
-	ht->array[index] = new;
+	new->value = temp_val;
+	new->next = ht->array[in];
+	ht->array[in] = new;
 	return (1);
 }
