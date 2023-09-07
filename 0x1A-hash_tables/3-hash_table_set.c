@@ -20,7 +20,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	temp_val = strdup(value);
 	if (!temp_val)
 		return (0);
-	in = key_in((unsigned char *)key, ht->size);
+	in = key_index((unsigned char *)key, ht->size);
 
 	/* checks if a collision exists */
 	temp = ht->array[in];
