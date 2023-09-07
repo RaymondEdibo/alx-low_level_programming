@@ -7,12 +7,12 @@
 void hash_table_delete(hash_table_t *ht)
 {
 	hash_node_t *temp, *nxt;
-	unsigned long int i;
+	unsigned long int index;
 
 	if (!ht)
 		return;
-	for (i = 0; i < ht->size; i++)
-		for (temp = ht->array[i]; temp; temp = nxt)
+	for (index = 0; index < ht->size; index++)
+		for (temp = ht->array[index]; temp; temp = nxt)
 		{
 			nxt = temp->nxt;
 			free(temp->key);
